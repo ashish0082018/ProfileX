@@ -94,6 +94,7 @@ import { sendVerificationEmail } from "@/helpers/sendVerificationEmail"
 // import { redirect } from "next/navigation"
 import jwt from "jsonwebtoken"
 import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
 const signupSchema=z.object({
     name: z.string()
     .min(5, { message: "The name must be at least 5 characters long." })
@@ -211,7 +212,8 @@ const emailResponse = await sendVerificationEmail(
     return {error:{verification: emailResponse.message}}
  }
 // else the user finally register by writing the coreect otp
-    return {error: {success:"You have successfully created account !!"}};
+
+    // return {error: {success:"You have successfully created account !!"}};
 
 
 
@@ -219,12 +221,15 @@ const emailResponse = await sendVerificationEmail(
     
 } catch (error:unknown) {
     if (error instanceof Error) {
+        console.log(error);
+        
         return {
           error: {
               formError: ["something went wrong"],
           },
         };
       } else {
+        console.log(error);
         return {
           error: {
             formError: ["something went wrong"],
@@ -232,6 +237,7 @@ const emailResponse = await sendVerificationEmail(
         };
       }    
 }
+redirect("/verifyotp")
 }
 
 

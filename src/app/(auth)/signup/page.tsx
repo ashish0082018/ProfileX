@@ -7,21 +7,17 @@ import React, { useActionState, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useFormStatus } from "react-dom";
 import Navbar from "@/components/home/Navbar";
-import { useRouter } from "next/navigation";
+
 
 
 function SignupPage() {
-  const router=useRouter()
+ 
   const [formState, action] = useActionState(signup, { error: {} });
 
   // Full-screen loading state
   const [loading, setLoading] = useState(false);
 
-  if (formState.error.success) {
-console.log(formState.error.success,"verifyotp");
 
-    router.push("/verifyotp");
-  }
 
   const [showPassword, setShowPassword] = useState(false);
   const [formdata, setFormdata] = useState({
