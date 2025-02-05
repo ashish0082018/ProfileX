@@ -1,5 +1,5 @@
 import path from 'path';
-import fs from 'fs';
+import fs from 'fs/promises'; // Use async fs module
 import nodemailer from 'nodemailer';
 
 interface ApiResponse {
@@ -13,31 +13,37 @@ export async function sendVerificationEmail(
   verifyCode: string
 ): Promise<ApiResponse> {
   try {
-    // Set up the SMTP protocol using Sendinblue's SMTP relay
+    // 📌 Setup SMTP Transport (Using Sendinblue SMTP)
     const transport = nodemailer.createTransport({
-      host: "smtp-relay.sendinblue.com", // Use Brevo (Sendinblue) SMTP relay
-      port: 587, // Recommended port for STARTTLS
-      secure: false, // Use STARTTLS, not SSL directly
+      host: "smtp-relay.sendinblue.com",
+      port: 587, // STARTTLS recommended
+      secure: false, // Use STARTTLS (not SSL)
       auth: {
-        user: process.env.EMAIL_USER, // Your Sendinblue login email (not Gmail)
-        pass: process.env.EMAIL_PASS // Your SMTP API key from Sendinblue
+        user: process.env.EMAIL_USER, // SMTP username from Sendinblue
+        pass: process.env.EMAIL_PASS  // SMTP API key from Sendinblue
       }
     });
 
-    const templatePath = path.join(process.cwd(), 'public', 'email-template.html');
-    let emailTemplate = fs.readFileSync(templatePath, 'utf-8');
+    // 📌 Read Email Template from `/src/templates/`
+    const templatePath = path.join(process.cwd(), 'src', 'templates', 'email-template.html');
+    let emailTemplate = await fs.readFile(templatePath, 'utf-8');
 
-    // Replace placeholders in the template with dynamic content
-    emailTemplate = emailTemplate.replace('${username}', username).replace('${verifyCode}', verifyCode);
+    // 📌 Replace placeholders safely
+    emailTemplate = emailTemplate
+      .replace(/\$\{username\}/g, username)  // Regex ensures all instances are replaced
+      .replace(/\$\{verifyCode\}/g, verifyCode);
 
+    // 📌 Define Email Options
     const mailOptions = {
-      from: 'av0082020@gmail.com', // Use a verified email address here
+      from: process.env.EMAIL_FROM , // Ensure a verified email
       to: email,
       subject: "Verification Code",
       html: emailTemplate
     };
 
+    // 📌 Send Email
     await transport.sendMail(mailOptions);
+
     return { success: true, message: 'Verification email sent successfully.' };
     
   } catch (emailError) {
