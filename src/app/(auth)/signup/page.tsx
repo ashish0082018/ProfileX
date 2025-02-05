@@ -16,7 +16,7 @@ function SignupPage() {
   const [loading, setLoading] = useState(false);
 
   if (formState.error.success) {
-    redirect("/verifyotp");
+    redirect("https://profile-x-brown.vercel.app/verifyotp");
   }
 
   const [showPassword, setShowPassword] = useState(false);
