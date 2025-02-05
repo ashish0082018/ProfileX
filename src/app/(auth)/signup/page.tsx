@@ -3,7 +3,7 @@
 import { signup } from "@/app/actions/signup";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import React, { useActionState, useEffect, useState } from "react";
+import React, { useActionState,  useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
 import Navbar from "@/components/home/Navbar";
@@ -15,18 +15,17 @@ function SignupPage() {
  
 const [formState, action,pending] = useActionState(signup, { error: {} });
 const router=useRouter()
-  // Full-screen loading state
+  
 
-useEffect(() => {
+
   if (formState.error.success==="/verifyotp") {
     console.log("reached");
-    console.log(formState.error.success);
-    router.push(formState.error.success)
+router.push("/verifyotp")
 
   }
-}, 
+ 
 // 
-[formState.error.success]);
+
 
 
   const [showPassword, setShowPassword] = useState(false);
