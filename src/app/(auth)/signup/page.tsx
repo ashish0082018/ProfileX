@@ -18,6 +18,7 @@ function SignupPage() {
   const [loading, setLoading] = useState(false);
 
   if (formState.error.success) {
+console.log(formState.error.success,"verifyotp");
 
     router.push("/verifyotp");
   }
