@@ -94,7 +94,6 @@ import { sendVerificationEmail } from "@/helpers/sendVerificationEmail"
 // import { redirect } from "next/navigation"
 import jwt from "jsonwebtoken"
 import { cookies } from "next/headers"
-import { redirect } from "next/navigation"
 const signupSchema=z.object({
     name: z.string()
     .min(5, { message: "The name must be at least 5 characters long." })
@@ -177,6 +176,7 @@ if(existingUserByEmail){
     )
         
     }
+   
 }
 else{
     const hashpassword=await bcrypt.hash(result.data.password,10);
@@ -216,7 +216,7 @@ const emailResponse = await sendVerificationEmail(
     // return {error: {success:"You have successfully created account !!"}};
 
 
-
+    return {error:{success:"/verifyotp"}}
 
     
 } catch (error:unknown) {
@@ -237,7 +237,11 @@ const emailResponse = await sendVerificationEmail(
         };
       }    
 }
-redirect("/verifyotp")
+console.log("before");
+
+
+
+ 
 }
 
 
