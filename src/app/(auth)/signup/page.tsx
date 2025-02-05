@@ -7,7 +7,8 @@ import React, { useActionState, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useFormStatus } from "react-dom";
 import Navbar from "@/components/home/Navbar";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+
 
 function SignupPage() {
   const router=useRouter()
