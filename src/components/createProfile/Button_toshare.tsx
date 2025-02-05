@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 
 const Button_toshare = ({slug}:{slug:string}) => {
-    const linkToCopy=`http://localhost:3000/profile/${slug}`
+    const linkToCopy=`https://profile-x-brown.vercel.app/profile/${slug}`
     const [isCopied, setIsCopied] = useState(false);
 
     // The link you want to copy

@@ -5,18 +5,20 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import React, { useActionState, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { redirect } from "next/navigation";
 import { useFormStatus } from "react-dom";
 import Navbar from "@/components/home/Navbar";
+import { useRouter } from "next/router";
 
 function SignupPage() {
+  const router=useRouter()
   const [formState, action] = useActionState(signup, { error: {} });
 
   // Full-screen loading state
   const [loading, setLoading] = useState(false);
 
   if (formState.error.success) {
-    redirect("https://profile-x-brown.vercel.app/verifyotp");
+
+    router.push("https://profile-x-brown.vercel.app/verifyotp");
   }
 
   const [showPassword, setShowPassword] = useState(false);
