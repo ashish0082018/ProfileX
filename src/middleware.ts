@@ -3,6 +3,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // Define public routes that do not require authentication
+// eslint-disable-next-line  
 const publicRoutes = ["/about", "/contact", "/","/signup","/signin","/verifyotp"];
 
 // Define protected routes that require authentication
