@@ -19,7 +19,7 @@ function SignupPage() {
 
   if (formState.error.success) {
 
-    router.push("https://profile-x-brown.vercel.app/verifyotp");
+    router.push("/verifyotp");
   }
 
   const [showPassword, setShowPassword] = useState(false);
