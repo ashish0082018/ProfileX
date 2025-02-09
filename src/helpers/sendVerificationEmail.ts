@@ -14,7 +14,7 @@ export async function sendVerificationEmail(
   try {
     // Set up the SMTP protocol using Sendinblue's SMTP relay
     const transport = nodemailer.createTransport({
-      host: "smtp-relay.sendinblue.com", // Use Brevo (Sendinblue) SMTP relay
+      host: "smtp-relay.brevo.com", // Use Brevo (Sendinblue) SMTP relay
       port: 587, // Recommended port for STARTTLS
       secure: false, // Use STARTTLS, not SSL directly
       auth: {
@@ -132,7 +132,7 @@ export async function sendVerificationEmail(
     // emailTemplate = emailTemplate.replace('${username}', username).replace('${verifyCode}', verifyCode);
 
     const mailOptions = {
-      from: 'av0082020@gmail.com', // Use a verified email address here
+      from: process.env.EMAIL_FROM, // Use a verified email address here
       to: email,
       subject: "Verification Code",
       html: emailTemplate
