@@ -6,7 +6,6 @@ import { prisma } from "@/lib/prisma"
 import {z} from "zod"
 import bcrypt from "bcrypt"
 import { sendVerificationEmail } from "@/helpers/sendVerificationEmail"
-// import { redirect } from "next/navigation"
 import jwt from "jsonwebtoken"
 import { cookies } from "next/headers"
 const signupSchema=z.object({
@@ -21,7 +20,7 @@ const signupSchema=z.object({
     password: z.string()
         .min(8, { message: "The password must be at least 8 characters long." })
         .regex(/[A-Z]/, { message: "The password must contain at least one uppercase letter." })
-        // .regex(/[^a-zA-Z0-9]/, { message: "The password must contain at least one special character." })
+      
 
 })
 
@@ -126,9 +125,7 @@ const emailResponse = await sendVerificationEmail(
   if (!emailResponse.success) {
     return {error:{verification: emailResponse.message}}
  }
-// else the user finally register by writing the coreect otp
 
-    // return {error: {success:"You have successfully created account !!"}};
 
 
     return {error:{success:"/verifyotp"}}
