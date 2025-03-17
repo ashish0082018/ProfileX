@@ -25,6 +25,7 @@ export default  function Home() {
       <ToastContainer/>
         <div className="min-h-screen  flex flex-col gap-2 ">
         <div className="bg-zinc-950 h-12 ">
+
         <Navbar/>
        </div>
         
@@ -32,6 +33,7 @@ export default  function Home() {
   
           {/* body */}
           <div className="min-h-screen">
+            This is body
             <Body />
           </div>
           {/*footer  */}
