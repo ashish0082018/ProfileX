@@ -33,7 +33,7 @@ export default  function Home() {
   
           {/* body */}
           <div className="min-h-screen">
-            This is body
+            This is body which is changes
             <Body />
           </div>
           {/*footer  */}
