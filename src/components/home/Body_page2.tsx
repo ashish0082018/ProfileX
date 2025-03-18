@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const LandingPageTwo = () => {
   return (
-    <div className="min-h-screen bg-zinc-900 rounded-xl text-white flex flex-col items-center justify-center p-6">
+    <div className=" bg-zinc-900 rounded-xl text-white flex flex-col items-center justify-center p-6">
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}

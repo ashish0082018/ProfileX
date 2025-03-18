@@ -4,7 +4,6 @@ import { useSession } from "next-auth/react";
 import { motion } from "framer-motion";
 import React from "react";
 import Link from "next/link";
-import LandingPageTwo from "./Body_page2";
 
 function Home() {
   const { data: session } = useSession();
@@ -12,7 +11,7 @@ function Home() {
   return (
     <>
    
-    <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-900 text-white p-6 mb-20 md:mb-20">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-900 text-white p-6 ">
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
@@ -40,9 +39,7 @@ function Home() {
           {session ? <Link href={"/dashboard"}>Go to Dashboard</Link>: <> <Link href={"/dashboard"}>Create Profile</Link> </> }
         </button> 
       </motion.div>
-     <div className=" h-screen md:mb-8 md:mt-10  mb-24">
-      <LandingPageTwo/>
-     </div>
+
     </div>
   
  

@@ -1,49 +1,42 @@
 "use client"
 import Body from "@/components/home/Body";
+import LandingPageTwo from "@/components/home/Body_page2";
 import Footer from "@/components/home/Footer";
 import Navbar from "@/components/home/Navbar";
 import Loadingpage from "@/components/loaders/Loadingpage";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 
-
-
-export default  function Home() {
-  const [isLoading, setIsLoading] = useState(true); 
+export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false);  
+      setIsLoading(false);
     }, 500);
 
-    return () => clearTimeout(timer); 
-  }, []); //
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
-    {
-      isLoading ? <> <Loadingpage/> </>: <div className="min-h-screen relative"> 
-      <ToastContainer/>
-        <div className="min-h-screen  flex flex-col gap-2 ">
-        <div className="bg-zinc-950 h-12 ">
-
-        <Navbar/>
-       </div>
-        
-          {/* navbar */}
-  
-          {/* body */}
-          <div className="min-h-screen">
-            
-            <Body />
+      {isLoading ? (
+        <Loadingpage />
+      ) : (
+        <div className="min-h-screen flex flex-col">
+          <ToastContainer />
+          <div className="bg-zinc-950 h-12">
+            <Navbar />
           </div>
-          {/*footer  */}
-          <div className="absolute bottom-0 w-full" >
+          <div className="flex-grow">
+            <Body />
+            <LandingPageTwo />
+          </div>
+          <div className="w-full">
             <Footer />
           </div>
         </div>
-        </div>
-    }
-
+      )}
     </>
   );
 }
