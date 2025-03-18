@@ -1,6 +1,8 @@
 import Footer from '@/components/home/Footer'
 import Navbar from '@/components/home/Navbar'
 import React from 'react'
+import mypic from 'public/pic.jpg'
+import Image from 'next/image'
 
 function page() {
   return (
@@ -35,7 +37,9 @@ function page() {
       <div className="text-white rounded-lg shadow-md p-6 text-center bg-zinc-800">
         <div className="w-24 h-24 mx-auto  rounded-full flex justify-center items-center bg-cover bg-center overflow-hidden "> 
       {/*  eslint-disable-next-line */}
-          <img src="https://res.cloudinary.com/db9bglamk/image/upload/v1738703167/NODEE/fjdsypt6m7i5xfhdlcs5.jpg" alt="" />  </div>
+          
+      <Image src={mypic} style={{objectFit:'cover'}}  alt='ai image'></Image>
+           </div>
         <h3 className="mt-4 text-xl font-semibold">Ashish Verma</h3>
         <p className="text-gray-400">Web Developer & Designer</p>
       </div>

@@ -21,12 +21,13 @@ function page() {
         <p className="mt-4 text-gray-700 text-lg">Feel free to reach out to me through the following platforms:</p>
         
         <div className="mt-6 flex flex-col gap-4 items-center">
-          <a 
-            href="av0082018@gmail.com" 
-            className="bg-white text-blue-600 px-6 py-3 rounded-lg shadow-md font-semibold hover:bg-gray-200 transition"
-          >
-            Email Me
-          </a>
+        <a 
+  href="mailto:av0082018@gmail.com" 
+  className="bg-white text-blue-600 px-6 py-3 rounded-lg shadow-md font-semibold hover:bg-gray-200 transition"
+>
+  Email Me
+</a>
+
 
           <a 
            

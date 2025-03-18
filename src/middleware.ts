@@ -11,8 +11,9 @@ const protectedRoutes = ["/dashboard", "/dashboard/style1", "/dashboard/style1/e
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-
-  const token = req.cookies.get("__Secure-authjs.session-token")?.value;
+// For production
+ // const token = req.cookies.get("__Secure-authjs.session-token")?.value;
+  const token = req.cookies.get("authjs.session-token")?.value;
 
   // If the route is protected, check if the user is authenticated
   if (protectedRoutes.includes(pathname)) {

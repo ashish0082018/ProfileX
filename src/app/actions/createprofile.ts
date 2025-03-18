@@ -28,7 +28,7 @@ const formSchema = z.object({
   message: z
     .string()
     .min(10, { message: "Write a message with more than 10 characters" })
-    .max(150, { message: "Write a message with less than 150 characters" }),
+    .max(250, { message: "Write a message with less than 250 characters" }),
   profiles: z.array(profileschema).min(1, { message: "At least one profile is required" }),
 });
 

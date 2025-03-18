@@ -19,6 +19,8 @@ import { createProfile } from "@/app/actions/createprofile";
 import Template from "./Template";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from 'react-toastify';
+import axios from "axios";
+import { Sparkles } from "lucide-react";
 
 
 type Profile = { name: string; link: string; icon: React.JSX.Element };
@@ -126,6 +128,16 @@ function CreateTemplate1() {
     }
   };
 
+  const [aiload,setaiload]=useState(false)
+
+  const handleMagic=async(prompt:string)=>{
+    setaiload(true);
+    const response=await axios.post("/api/askai",{prompt});
+    setaiload(false);
+    setMessage(response.data)
+    
+  }
+
   return (
     <div className="min-h-screen w-full flex flex-col md:flex-row justify-between items-center gap-5 container mx-auto text-black p-4">
   <div> <ToastContainer/> </div>
@@ -167,12 +179,15 @@ function CreateTemplate1() {
                   id="file-upload"
                   name="image"
                 />
+                <div className="flex flex-col gap-2 ml-4"> 
                 <label
                   htmlFor="file-upload"
                   className="cursor-pointer px-3 py-2 tracking-tighter border shadow-lg h-fit bg-white rounded-md transition hover:scale-105"
                 >
                   Upload profile picture.
                 </label>
+                <p className="text-sm text-red-600 ">Upload image of less than 1Mb</p>
+                </div>
               </div>
 
               <label className="text-sm tracking-tighter font-semibold">
@@ -204,14 +219,22 @@ function CreateTemplate1() {
                 className="px-2 py-1 border-2 border-gray-300 rounded-md outline-none w-full"
               />
               {formState.error.formerror && typeof formState.error.formerror === "object" && 
-                <div className="text-red-500 text-sm">
+              
+               <div className="text-red-500 text-sm">
                   {"message" in formState.error.formerror && 
                     Array.isArray(formState.error.formerror.message) && (
                       <p>{formState.error.formerror.message[0]}</p>
                   )}
                 </div>
               }
-
+              <div>
+              <button disabled={aiload} onClick={()=>handleMagic(message)}  className=" my-2 flex items-center gap-2 px-4 py-2 bg-purple-700 text-white rounded-lg hover:bg-purple-800 transition disabled:opacity-50"
+      > {aiload ? "Magicking..." : "Rephrase with AI"}
+      <Sparkles className="w-4 h-4 text-yellow-400" />
+      
+      </button>
+                  </div>
+ 
               <div className="space-y-4">
                 <Select onValueChange={handleSelectProfile}>
                   <SelectTrigger className="w-full md:w-[250px] border border-black p-2 rounded-md shadow-md outline-none">
