@@ -9,7 +9,7 @@ datasource db {
 
 
 model User {
-  id            String       @id @default(cuid())  // Change to Int for auto-incrementing IDs
+  id            String       @id @default(cuid()) 
   name          String?
   email         String?   @unique
   image         String?
