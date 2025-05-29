@@ -66,7 +66,7 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
     strategy: "jwt", // JWT session instead of database
   },
   callbacks:{
-    // JWT Callback: Store the user ID (as integer) and other user info in JWT token
+    // JWT Callback: Store the user ID and other user info in JWT token
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id ;
