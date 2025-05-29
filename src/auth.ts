@@ -38,7 +38,7 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
             throw new Error("No user found with this email");
           }
 
-          // Compare the password
+         
           const isPasswordCorrect = await bcrypt.compare(
             credentials.password,
             user.password || ""
