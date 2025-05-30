@@ -40,18 +40,13 @@
 
 
 
-## Getting Started
-# Clone the repository
+## 📌 Getting Started
+
+> Clone and run locally
+
+```bash
 git clone https://github.com/ashish0082018/ProfileX
 cd profilex
-
-# 2. Install dependencies
 npm install
-
-# 3. Generate Prisma client and apply migrations
-npx prisma generate
-npx prisma migrate dev
-
-# 4. Start the development server
 npm run dev
 
