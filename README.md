@@ -1,9 +1,8 @@
 # 📇 ProfileX — Dynamic Profile Builder with Sharable Links
 
-**ProfileX** is a powerful web application that empowers users to create personalized, visually appealing, and sharable profile pages. Designed for professionals, freelancers, and creators, it integrates modern web technologies, AI enhancements, and security-first practices to deliver a seamless profile-building experience.
+**ProfileX** is a dynamic profile-building platform where users can create, customize, and share professional profiles via unique links. Unlike static resumes, it provides an interactive, media-rich, and AI-assisted experience to make online profile page more engaging and modern.
 
-> **🔗 Live Demo**: [https://profilex-coral.vercel.app/](#)  
-> **💻 GitHub Repository**: [https://github.com/ashish0082018/ProfileX](#)
+> **🔗 Live Demo**: https://profilex-coral.vercel.app 
 
 ---
 
